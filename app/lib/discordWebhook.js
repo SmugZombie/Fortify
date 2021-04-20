@@ -5,14 +5,26 @@ var config = require('../config/config');
 module.exports = class discordWebhook {
 	static async createMessage(event){
 		var data = JSON.stringify({
-			"content": event.description + " detected on host: " + event.host,
+			"content": "A new event was forwarded.",
 			"embeds": [
 				{
 					"title": "Log:",
 					"description": event.rawlog,
-					"color": null
+					"color": null,
+					"fields": [
+						{
+						  "name": "Hostname",
+						  "value": event.host
+						},
+						{
+						  "name": "Description",
+						  "value": event.description
+						}
 				}
-			]
+			],
+			"footer": {
+				"text": "Forwarded by Fortify"
+			  }
 		});
 
 		var axiosconfig = {
