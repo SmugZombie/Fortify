@@ -20,11 +20,13 @@ module.exports = class discordWebhook {
 						  "name": "Description",
 						  "value": event.description
 						}
+					],
+					"footer": {
+						"text": "Forwarded by Fortify"
+					  }
 				}
 			],
-			"footer": {
-				"text": "Forwarded by Fortify"
-			  }
+			"username": event.host.toUpperCase()
 		});
 
 		var axiosconfig = {
