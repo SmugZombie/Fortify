@@ -3,9 +3,11 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const router = express.Router();
 const app = express()
+const axios = require('axios');
 const options = { type: 'application/json'}
 require('dotenv').config()
 var config = require('./config/config');
+const discordWebhook = require('./lib/discordWebhook');
 
 // Allow for raw posts
 app.use(bodyParser.raw(options));
