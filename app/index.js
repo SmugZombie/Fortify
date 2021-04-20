@@ -18,7 +18,8 @@ app.post('/notify', async function(req, res, next){
 
     console.log(req.body.toString());
 
-    let event = JSON.parse(req.body.toString())
+    //let event = JSON.parse(req.body.toString());
+    let event = req.body.toString()
 
     discordWebhook.createMessage(event);
 
