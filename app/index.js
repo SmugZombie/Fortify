@@ -18,6 +18,10 @@ app.post('/notify', async function(req, res, next){
 
     console.log(req.body.toString());
 
+    let event = JSON.parse(req.body.toString())
+
+    discordWebhook.createMessage(event);
+
     let err = "404 - Endpoint not found or incorrect method used"
 	res.status(404).send({ "message": "fail", "details": `${err}` });
 });
