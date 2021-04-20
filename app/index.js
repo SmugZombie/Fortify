@@ -14,12 +14,13 @@ app.use(bodyParser.raw(options));
 
 app.post('/notify', async function(req, res, next){
 
-    //console.log(JSON.stringify(req.body.toString()));
-
-    console.log(req.body.toString());
+    console.log(req.headers);
 
     //let event = JSON.parse(req.body.toString());
-    let event = req.body.toString()
+    let event = {}
+    event.description = req.headers.description;
+    event.host = req.headers.hostname;
+    event.raw = req.headers.rawlog;
 
     discordWebhook.createMessage(event);
 

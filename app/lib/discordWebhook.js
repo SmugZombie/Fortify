@@ -5,7 +5,14 @@ var config = require('../config/config');
 module.exports = class discordWebhook {
 	static async createMessage(event){
 		var data = JSON.stringify({
-			"content": event
+			"content": event.description + " detected on host: " + event.host,
+			"embeds": [
+				{
+					"title": "Log:",
+					"description": event.rawlog,
+					"color": null
+				}
+			]
 		});
 
 		var axiosconfig = {
